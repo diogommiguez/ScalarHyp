@@ -50,7 +50,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "displayMath": [["$$", "$$"], ["\\[", "\\]"]]}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -125,56 +125,33 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="dissipation_tests.html">
-     Dissipation tests
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="newrad.html">
+    <a class="reference internal" href="NewRad.html">
      NewRad
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="tem_tests_no_dissipation.html">
-     tem_tests_no_dissipation
+    <a class="reference internal" href="NoDissipation.html">
+     No Dissipation
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="tem_tests_with_dissipation.html">
-     tem_tests_with_dissipation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="resolution_tests_no_dissipation.html">
-     resolution_tests_no_dissipation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="resolution_tests_with_dissipation.html">
-     resolution_tests_with_dissipation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="newrad_modified_tem.html">
-     NewRad modified to use TEM
+    <a class="reference internal" href="Dissipation.html">
+     TEM2, DISSIPATION (3rd order, TEM, on
+     <span class="math notranslate nohighlight">
+      \(r\)
+     </span>
+     ,
+     <span class="math notranslate nohighlight">
+      \(\theta\)
+     </span>
+     ,
+     <span class="math notranslate nohighlight">
+      \(\phi\)
+     </span>
+     )
     </a>
    </li>
   </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="markdown.html">
-   Markdown Files
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="mymarkdownfile.html">
-   Here’s my sample title
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="markdown-notebooks.html">
-   Notebooks with MyST Markdown
-  </a>
  </li>
 </ul>
 
@@ -484,7 +461,7 @@ For example, here’s some sample Matplotlib code:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;contextlib.ExitStack at 0x112703340&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;contextlib.ExitStack at 0x1119b5c00&gt;
 </pre></div>
 </div>
 </div>
