@@ -115,8 +115,8 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="waveequation.html">
-   Wave Equation
+  <a class="reference internal" href="BC.html">
+   Boundary Conditions
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
@@ -125,10 +125,27 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="Dirichlet.html">
+     Dirichlet
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="NewRad.html">
      NewRad
     </a>
    </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="NO_BC.html">
+   Lopsided Derivatives
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="NoDissipation.html">
      No Dissipation
@@ -136,19 +153,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="Dissipation.html">
-     TEM2, DISSIPATION (3rd order, TEM, on
-     <span class="math notranslate nohighlight">
-      \(r\)
-     </span>
-     ,
-     <span class="math notranslate nohighlight">
-      \(\theta\)
-     </span>
-     ,
-     <span class="math notranslate nohighlight">
-      \(\phi\)
-     </span>
-     )
+     Dissipation
     </a>
    </li>
   </ul>
@@ -461,7 +466,7 @@ For example, here’s some sample Matplotlib code:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;contextlib.ExitStack at 0x1119b5c00&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;contextlib.ExitStack at 0x10738b310&gt;
 </pre></div>
 </div>
 </div>

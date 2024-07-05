@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="TEM2, DISSIPATION (3rd order, TEM, on \(r\),\(\theta\),\(\phi\))" href="Dissipation.html" />
-    <link rel="prev" title="NewRad" href="NewRad.html" />
+    <link rel="next" title="Dissipation" href="Dissipation.html" />
+    <link rel="prev" title="Lopsided Derivatives" href="NO_BC.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -114,21 +114,38 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="waveequation.html">
-   Wave Equation
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="BC.html">
+   Boundary Conditions
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Dirichlet.html">
+     Dirichlet
+    </a>
+   </li>
    <li class="toctree-l2">
     <a class="reference internal" href="NewRad.html">
      NewRad
     </a>
    </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="NO_BC.html">
+   Lopsided Derivatives
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      No Dissipation
@@ -136,19 +153,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="Dissipation.html">
-     TEM2, DISSIPATION (3rd order, TEM, on
-     <span class="math notranslate nohighlight">
-      \(r\)
-     </span>
-     ,
-     <span class="math notranslate nohighlight">
-      \(\theta\)
-     </span>
-     ,
-     <span class="math notranslate nohighlight">
-      \(\phi\)
-     </span>
-     )
+     Dissipation
     </a>
    </li>
   </ul>
@@ -340,6 +345,11 @@ title="Print to PDF"
    Medium Resolution, TEM comparison
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tem2-turn-off-angular-derivatives">
+   TEM2, TURN OFF ANGULAR DERIVATIVES.
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -369,6 +379,11 @@ title="Print to PDF"
    Medium Resolution, TEM comparison
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tem2-turn-off-angular-derivatives">
+   TEM2, TURN OFF ANGULAR DERIVATIVES.
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -395,9 +410,9 @@ title="Print to PDF"
 <p><video src="_static/videos/ScalarHyp_EPS0_TEM4_sliced.mp4"  controls width="700" height="520" ></video></p>
 <p>COMPARISON</p>
 <iframe src="_static/ScalarHyp_TEMS_EPS0.html" width="800" height="600" frameborder="0"></iframe>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><strong>Conclusion</strong>: Higher order of accuracy TEM seems to explode a little slower, but not significantly so. :/</p>
+<div class="admonition-conclusion admonition">
+<p class="admonition-title">Conclusion</p>
+<p>Higher order of accuracy TEM seems to explode a little slower, but not significantly so. :/</p>
 </div>
 <p><strong>n=35</strong> (TEM2)</p>
 <p>n_ghost_points = 6, h_radial = 0.01, h_cartesian = 0.01, inner_radius = 0.3, outer_radius = 1, n_angular = 35, outer_boundary_size = 6 , patch_boundary_size = 6, additional_overlap_size = 2, time_step = 0.01, output_every = 9</p>
@@ -412,10 +427,108 @@ title="Print to PDF"
 <section id="medium-resolution-tem-comparison">
 <h2>Medium Resolution, TEM comparison<a class="headerlink" href="#medium-resolution-tem-comparison" title="Permalink to this headline">#</a></h2>
 <iframe src="_static/ScalarHyp_MED_TEMS_EPS0.html" width="800" height="600" frameborder="0"></iframe>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><strong>Conclusion</strong>: this growth is unstable as it became larger when the resolution increased.</p>
+<div class="admonition-conclusion admonition">
+<p class="admonition-title">Conclusion</p>
+<p>this growth is unstable as it became larger when the resolution increased.</p>
 </div>
+</section>
+<section id="tem2-turn-off-angular-derivatives">
+<h2>TEM2, TURN OFF ANGULAR DERIVATIVES.<a class="headerlink" href="#tem2-turn-off-angular-derivatives" title="Permalink to this headline">#</a></h2>
+<p>This is weird since it will most likely create some problems in the interpatch spherical boundary.</p>
+<p>Copy this code into calc_rhs.cc:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>if (usejacobian){
+
+  JacPDstandardNth1u2 = 0*J11L*PDstandardNth1u2 + 0*J21L*PDstandardNth2u2 + 
+    J31L*PDstandardNth3u2;
+  
+  JacPDstandardNth1v2 = 0*J11L*PDstandardNth1v2 + 0*J21L*PDstandardNth2v2 + 
+    J31L*PDstandardNth3v2;
+  
+  JacPDstandardNth2u2 = 0*J12L*PDstandardNth1u2 + 0*J22L*PDstandardNth2u2 + 
+    J32L*PDstandardNth3u2;
+  
+  JacPDstandardNth2v2 = 0*J12L*PDstandardNth1v2 + 0*J22L*PDstandardNth2v2 + 
+    J32L*PDstandardNth3v2;
+  
+  JacPDstandardNth3u2 = 0*J13L*PDstandardNth1u2 + 0*J23L*PDstandardNth2u2 + 
+    J33L*PDstandardNth3u2;
+  
+  JacPDstandardNth3v2 = 0*J13L*PDstandardNth1v2 + 0*J23L*PDstandardNth2v2 + 
+    J33L*PDstandardNth3v2;
+  
+  JacPDstandardNth11u2 = 0*dJ111L*PDstandardNth1u2 + 
+    2*(J11L*(J21L*0*PDstandardNth12u2 + J31L*0*PDstandardNth13u2) + 
+    J21L*J31L*0*PDstandardNth23u2) + dJ211L*0*PDstandardNth2u2 + 
+    dJ311L*PDstandardNth3u2 + 0*PDstandardNth11u2*pow(J11L,2) + 
+    0*PDstandardNth22u2*pow(J21L,2) + PDstandardNth33u2*pow(J31L,2);
+  
+  JacPDstandardNth22u2 = 0*dJ122L*PDstandardNth1u2 + 
+    2*(J12L*(J22L*0*PDstandardNth12u2 + J32L*0*PDstandardNth13u2) + 
+    J22L*J32L*0*PDstandardNth23u2) + dJ222L*0*PDstandardNth2u2 + 
+    dJ322L*PDstandardNth3u2 + 0*PDstandardNth11u2*pow(J12L,2) + 
+    0*PDstandardNth22u2*pow(J22L,2) + PDstandardNth33u2*pow(J32L,2);
+  
+  JacPDstandardNth33u2 = 0*dJ133L*PDstandardNth1u2 + 
+    2*(J13L*(J23L*0*PDstandardNth12u2 + J33L*0*PDstandardNth13u2) + 
+    J23L*J33L*0*PDstandardNth23u2) + dJ233L*0*PDstandardNth2u2 + 
+    dJ333L*PDstandardNth3u2 + 0*PDstandardNth11u2*pow(J13L,2) + 
+    0*PDstandardNth22u2*pow(J23L,2) + PDstandardNth33u2*pow(J33L,2);
+}
+</pre></div>
+</div>
+<p>Copy this code into calc_rhs_boundary.cc:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>if (usejacobian){
+
+  JacPDonesided2ndTEM21u2 = 0*J11L*PDonesided2ndTEM21u2 + 
+    0*J21L*PDonesided2ndTEM22u2 + J31L*PDonesided2ndTEM23u2;
+  
+  JacPDonesided2ndTEM21v2 = 0*J11L*PDonesided2ndTEM21v2 + 
+    0*J21L*PDonesided2ndTEM22v2 + J31L*PDonesided2ndTEM23v2;
+  
+  JacPDonesided2ndTEM22u2 = 0*J12L*PDonesided2ndTEM21u2 + 
+    0*J22L*PDonesided2ndTEM22u2 + J32L*PDonesided2ndTEM23u2;
+  
+  JacPDonesided2ndTEM22v2 = 0*J12L*PDonesided2ndTEM21v2 + 
+    0*J22L*PDonesided2ndTEM22v2 + J32L*PDonesided2ndTEM23v2;
+  
+  JacPDonesided2ndTEM23u2 = 0*J13L*PDonesided2ndTEM21u2 + 
+    0*J23L*PDonesided2ndTEM22u2 + J33L*PDonesided2ndTEM23u2;
+  
+  JacPDonesided2ndTEM23v2 = 0*J13L*PDonesided2ndTEM21v2 + 
+    0*J23L*PDonesided2ndTEM22v2 + J33L*PDonesided2ndTEM23v2;
+  
+  JacPDonesided2ndTEM211u2 = 0*dJ111L*PDonesided2ndTEM21u2 + 
+    2*(J11L*(J21L*0*PDonesided2ndTEM212u2 + 0*J31L*PDonesided2ndTEM213u2) + 
+    J21L*J31L*0*PDonesided2ndTEM223u2) + dJ211L*0*PDonesided2ndTEM22u2 + 
+    dJ311L*PDonesided2ndTEM23u2 + 0*PDonesided2ndTEM211u2*pow(J11L,2) + 
+    0*PDonesided2ndTEM222u2*pow(J21L,2) + PDonesided2ndTEM233u2*pow(J31L,2);
+  
+  JacPDonesided2ndTEM222u2 = 0*dJ122L*PDonesided2ndTEM21u2 + 
+    2*(J12L*(J22L*0*PDonesided2ndTEM212u2 + 0*J32L*PDonesided2ndTEM213u2) + 
+    J22L*J32L*0*PDonesided2ndTEM223u2) + dJ222L*0*PDonesided2ndTEM22u2 + 
+    dJ322L*PDonesided2ndTEM23u2 + 0*PDonesided2ndTEM211u2*pow(J12L,2) + 
+    0*PDonesided2ndTEM222u2*pow(J22L,2) + PDonesided2ndTEM233u2*pow(J32L,2);
+  
+  JacPDonesided2ndTEM233u2 = 0*dJ133L*PDonesided2ndTEM21u2 + 
+    2*(J13L*(J23L*0*PDonesided2ndTEM212u2 + 0*J33L*PDonesided2ndTEM213u2) + 
+    J23L*J33L*0*PDonesided2ndTEM223u2) + dJ233L*0*PDonesided2ndTEM22u2 + 
+    dJ333L*PDonesided2ndTEM23u2 + 0*PDonesided2ndTEM211u2*pow(J13L,2) + 
+    0*PDonesided2ndTEM222u2*pow(J23L,2) + PDonesided2ndTEM233u2*pow(J33L,2);
+}
+</pre></div>
+</div>
+<p><video src="_static/videos/NO_ANG_DER_sliced.mp4"  controls width="700" height="520" ></video></p>
+<p><video src="_static/videos/NO_ANG_DER_scri.mp4"  controls width="700" height="520" ></video></p>
+<iframe src="_static/NO_ANG_DER.html" width="800" height="600" frameborder="0"></iframe>
+<div class="admonition-conclusion admonition">
+<p class="admonition-title">Conclusion</p>
+<p>I guess turning off he angular derivatives (only on the multipatches) doesn’t prevent the growth. But did i actually turn the angular derivatives off?</p>
+</div>
+<p><em>Non-spherical initial data</em></p>
+<p><video src="_static/videos/NO_ANG_DER_NON_SPH_sliced.mp4"  controls width="700" height="520" ></video></p>
+<blockquote>
+<div><p>I guess i did turn the angular derivatives off in the multipatch region.</p>
+</div></blockquote>
 </section>
 </section>
 
@@ -446,17 +559,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="NewRad.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="NO_BC.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">NewRad</p>
+            <p class="prev-next-title">Lopsided Derivatives</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="Dissipation.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">TEM2, DISSIPATION (3rd order, TEM, on <span class="math notranslate nohighlight">\(r\)</span>,<span class="math notranslate nohighlight">\(\theta\)</span>,<span class="math notranslate nohighlight">\(\phi\)</span>)</p>
+        <p class="prev-next-title">Dissipation</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

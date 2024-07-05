@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Dissipation (TEM2, ORDER 3, ON \(r\),\(\theta\),\(\phi\)) &#8212; ScalarHyp</title>
+    <title>Dissipation &#8212; ScalarHyp</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -115,21 +115,38 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="waveequation.html">
-   Wave Equation
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="BC.html">
+   Boundary Conditions
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Dirichlet.html">
+     Dirichlet
+    </a>
+   </li>
    <li class="toctree-l2">
     <a class="reference internal" href="NewRad.html">
      NewRad
     </a>
    </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="NO_BC.html">
+   Lopsided Derivatives
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="NoDissipation.html">
      No Dissipation
@@ -137,19 +154,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Dissipation (TEM2, ORDER 3, ON
-     <span class="math notranslate nohighlight">
-      \(r\)
-     </span>
-     ,
-     <span class="math notranslate nohighlight">
-      \(\theta\)
-     </span>
-     ,
-     <span class="math notranslate nohighlight">
-      \(\phi\)
-     </span>
-     )
+     Dissipation
     </a>
    </li>
   </ul>
@@ -379,7 +384,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Dissipation (TEM2, ORDER 3, ON r,\theta,\phi)</h1>
+                <h1>Dissipation</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -438,8 +443,9 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="dissipation-tem2-order-3-on-r-theta-phi">
-<h1>Dissipation (TEM2, ORDER 3, ON <span class="math notranslate nohighlight">\(r\)</span>,<span class="math notranslate nohighlight">\(\theta\)</span>,<span class="math notranslate nohighlight">\(\phi\)</span>)<a class="headerlink" href="#dissipation-tem2-order-3-on-r-theta-phi" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="dissipation">
+<h1>Dissipation<a class="headerlink" href="#dissipation" title="Permalink to this headline">#</a></h1>
+<p>TEM2 on our lopsided derivative, dissipation of order 3, on <span class="math notranslate nohighlight">\(r\)</span>,<span class="math notranslate nohighlight">\(\theta\)</span>,<span class="math notranslate nohighlight">\(\phi\)</span>.</p>
 <section id="h-0-01-n-10-eps-0-19">
 <h2>h=0.01, n=10, eps = 0.19<a class="headerlink" href="#h-0-01-n-10-eps-0-19" title="Permalink to this headline">#</a></h2>
 <p>n_ghost_points = 6, h_radial = 0.01, h_cartesian = 0.01, inner_radius = 0.3, outer_radius = 1, n_angular = 10, outer_boundary_size = 6 , patch_boundary_size = 6, additional_overlap_size = 2, time_step = 0.01, output_every = 9</p>

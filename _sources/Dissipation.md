@@ -1,4 +1,6 @@
-# Dissipation (TEM2, ORDER 3, ON $r$,$\theta$,$\phi$)
+# Dissipation 
+
+TEM2 on our lopsided derivative, dissipation of order 3, on $r$,$\theta$,$\phi$.
 
 ## h=0.01, n=10, eps = 0.19
 

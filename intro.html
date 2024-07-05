@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Wave Equation" href="waveequation.html" />
+    <link rel="next" title="Boundary Conditions" href="BC.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -114,8 +114,8 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="waveequation.html">
-   Wave Equation
+  <a class="reference internal" href="BC.html">
+   Boundary Conditions
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
@@ -124,10 +124,27 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="Dirichlet.html">
+     Dirichlet
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="NewRad.html">
      NewRad
     </a>
    </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="NO_BC.html">
+   Lopsided Derivatives
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="NoDissipation.html">
      No Dissipation
@@ -135,19 +152,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="Dissipation.html">
-     Dissipation (TEM2, ORDER 3, ON
-     <span class="math notranslate nohighlight">
-      \(r\)
-     </span>
-     ,
-     <span class="math notranslate nohighlight">
-      \(\theta\)
-     </span>
-     ,
-     <span class="math notranslate nohighlight">
-      \(\phi\)
-     </span>
-     )
+     Dissipation
     </a>
    </li>
   </ul>
@@ -337,7 +342,8 @@ title="Print to PDF"
 <p>Check out the following:</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="waveequation.html">Wave Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BC.html">Boundary Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NO_BC.html">Lopsided Derivatives</a></li>
 </ul>
 </div>
 </section>
@@ -369,10 +375,10 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='right-next' id="next-link" href="waveequation.html" title="next page">
+    <a class='right-next' id="next-link" href="BC.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Wave Equation</p>
+        <p class="prev-next-title">Boundary Conditions</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
